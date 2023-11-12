@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diwali Wishes</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-image: url('1.jpg'); /* Replace with the URL of your romantic background image */
+            background-size: cover;
+            background-position: center;
+        }
+
+        #container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        #message img {
+            max-width: 100%;
+            border-radius: 10px; /* Adjust this value to control the border radius for a rectangular image */
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        #quote {
+            font-size: 24px;
+            margin-top: 20px;
+            color: rgb(0, 0, 0);
+        }
+
+        #animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="message">
+            <img src="your_image_url1.jpg" alt="Your Image">
+            <div id="quote">
+                <p>Wishing you a joyous Diwali!</p>
+                <p>Even though miles apart, my love for you shines bright.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var currentImage = 1;
+        var totalImages = 2;  // Change this if you have more images
+
+        var imageMessages = [
+            {
+                imageUrl: 'TrainingImage/bhavika.7777.1.jpg',
+                message: 'Wishing you a joyous Diwali! Even though miles apart, my love for you shines bright.'
+            },
+            {
+                imageUrl: 'TrainingImage/bhavika.7777.8.jpg',
+                message: 'On this special Diwali, my heart is filled with love for you. I miss you deeply.'
+            }
+            // Add more objects for additional images and messages
+        ];
+
+        document.getElementById("container").addEventListener("click", function () {
+            currentImage = (currentImage % totalImages) + 1;
+            var imageObject = imageMessages[currentImage - 1];
+            var imageElement = document.querySelector("#message img");
+            var quoteElement = document.querySelector("#quote");
+
+            // Fade out before changing the image and message
+            imageElement.style.animation = "fadeOut 1s ease-in-out";
+            quoteElement.style.animation = "fadeOut 1s ease-in-out";
+
+            setTimeout(function () {
+                imageElement.src = imageObject.imageUrl;
+                quoteElement.innerHTML = '<p>' + imageObject.message + '</p>';
+                imageElement.style.animation = "fadeIn 1s ease-in-out";
+                quoteElement.style.animation = "fadeIn 1s ease-in-out";
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
